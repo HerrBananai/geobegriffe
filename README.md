@@ -7,7 +7,7 @@ Kein Build, kein Framework: reines HTML/CSS/JS. Der Ordnerinhalt **ist** die Web
 
 ## Deploy auf Vercel (1 Klick)
 
-[![Vercel deployen](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HerrBananai/geo-begriffe)
+[![Vercel deployen](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HerrBananai/geobegriffe)
 
 Oder manuell:
 
