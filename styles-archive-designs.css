@@ -1,0 +1,428 @@
+/* ============================================================
+   Geo-Begriffe · verworfene Design-Entwürfe (AKTIV: nein)
+   saas "Modern" + editorial "Editorial" – nicht in index.html
+   eingebunden, nur zur Aufbewahrung. Zum Reaktivieren:
+   1) link rel="stylesheet" href="styles-archive-designs.css" ergänzen
+   2) Font-Link in index.html um Inter, Fraunces und Lora erweitern:
+      family=Inter:wght@400..800&family=Fraunces:opsz,wght@9..144,400..800&family=Lora:wght@400..700
+   3) app.js: DESIGN_IDS/NEW_DESIGNS um 'saas' bzw. 'editorial'
+      ergänzen und einen Button mit data-design-set="saas"/"editorial"
+      in die Einstellungen setzen.
+   ============================================================ */
+
+/* ============================================================
+   1) SAAS – modern, klar, Indigo-Akzent
+   ============================================================ */
+html[data-design="saas"] {
+  --bg: #f4f5f7;
+  --bg-elevated: rgba(247, 248, 250, 0.86);
+  --card: #ffffff;
+  --card-2: #f0f1f4;
+  --text: #101423;
+  --text-2: #667085;
+  --separator: #e2e5eb;
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.10);
+  --green: #16a34a;
+  --green-soft: rgba(22, 163, 74, 0.12);
+  --red: #e5484d;
+  --red-soft: rgba(229, 72, 77, 0.12);
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 14px 34px -18px rgba(16, 24, 40, 0.28);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.07);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --hero-bg: linear-gradient(135deg, #4f46e5 0%, #7c3aed 62%, #9333ea 100%);
+  --blob-1: #dfe2ff;
+  --blob-2: #f4e0ff;
+  color-scheme: light;
+}
+html[data-theme="dark"][data-design="saas"] {
+  --bg: #0c0e14;
+  --bg-elevated: rgba(13, 15, 22, 0.86);
+  --card: #14161e;
+  --card-2: #1c1f2a;
+  --text: #e9ebf1;
+  --text-2: #969db0;
+  --separator: rgba(255, 255, 255, 0.09);
+  --accent: #7f86ff;
+  --accent-soft: rgba(127, 134, 255, 0.18);
+  --green: #2fca6f;
+  --green-soft: rgba(47, 202, 111, 0.16);
+  --red: #ff6b71;
+  --red-soft: rgba(255, 107, 113, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 18px 40px -22px rgba(0, 0, 0, 0.95);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --hero-bg: linear-gradient(135deg, #4338ca 0%, #6d28d9 62%, #8b5cf6 100%);
+  --blob-1: #1b2050;
+  --blob-2: #2b1452;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"][data-design="saas"] {
+    --bg: #0c0e14;
+    --bg-elevated: rgba(13, 15, 22, 0.86);
+    --card: #14161e;
+    --card-2: #1c1f2a;
+    --text: #e9ebf1;
+    --text-2: #969db0;
+    --separator: rgba(255, 255, 255, 0.09);
+    --accent: #7f86ff;
+    --accent-soft: rgba(127, 134, 255, 0.18);
+    --green: #2fca6f;
+    --green-soft: rgba(47, 202, 111, 0.16);
+    --red: #ff6b71;
+    --red-soft: rgba(255, 107, 113, 0.16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 18px 40px -22px rgba(0, 0, 0, 0.95);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --hero-bg: linear-gradient(135deg, #4338ca 0%, #6d28d9 62%, #8b5cf6 100%);
+    --blob-1: #1b2050;
+    --blob-2: #2b1452;
+    color-scheme: dark;
+  }
+}
+
+html[data-design="saas"] body {
+  font-family: "Inter", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  letter-spacing: -0.011em;
+}
+html[data-design="saas"] .b1 { background: var(--blob-1); }
+html[data-design="saas"] .b2 { background: var(--blob-2); }
+
+/* Header: schlicht, 1px-Linie statt Glas-Effekt-Kante */
+html[data-design="saas"] .app-header { border-bottom: 1px solid var(--separator); }
+html[data-design="saas"] .title-wrap h1 { font-size: 21px; font-weight: 650; letter-spacing: -0.02em; }
+html[data-design="saas"] .subtitle { font-size: 12px; font-weight: 500; }
+html[data-design="saas"] .progress-pill { border: 1px solid var(--separator); border-radius: 10px; }
+
+/* Karten: 1px-Haarlinie, ruhiger Schatten */
+html[data-design="saas"] .card,
+html[data-design="saas"] .mode-tile,
+html[data-design="saas"] .chip,
+html[data-design="saas"] .install-banner,
+html[data-design="saas"] .opt,
+html[data-design="saas"] .m-left,
+html[data-design="saas"] .filter-chip,
+html[data-design="saas"] .icon-btn,
+html[data-design="saas"] .search { border-width: 1px; }
+html[data-design="saas"] .card,
+html[data-design="saas"] .flip-face,
+html[data-design="saas"] .mode-tile,
+html[data-design="saas"] .install-banner { box-shadow: var(--shadow-sm); }
+html[data-design="saas"] .flip-face { border-width: 1px; border-radius: 16px; }
+
+html[data-design="saas"] .section-title {
+  margin: 28px 4px 10px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-2);
+}
+html[data-design="saas"] .eyebrow { letter-spacing: 0.1em; }
+
+/* Hero */
+html[data-design="saas"] .hero {
+  background: var(--hero-bg);
+  border-radius: 16px;
+  box-shadow: 0 18px 42px -22px rgba(79, 70, 229, 0.75);
+}
+html[data-design="saas"] .hero::after { background: radial-gradient(circle, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 70%); }
+html[data-design="saas"] .hero h2 { font-weight: 700; }
+
+/* Buttons: Rechtecke mit kleinem Radius statt Pillen */
+html[data-design="saas"] .btn { border-radius: 10px; font-size: 15px; font-weight: 600; }
+html[data-design="saas"] .btn-white { border-radius: 10px; }
+html[data-design="saas"] .btn-primary { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.18); }
+html[data-design="saas"] .btn:active { transform: translateY(1px) scale(0.99); }
+html[data-design="saas"] .mode-tile:active { transform: translateY(1px); }
+
+/* Kacheln & Farbtöne */
+html[data-design="saas"] .mode-tile { border-radius: 14px; }
+html[data-design="saas"] .tile-icon { border-radius: 10px; }
+html[data-design="saas"] .t-blue { background: rgba(79, 70, 229, 0.10); color: #4f46e5; }
+html[data-design="saas"] .t-green { background: rgba(22, 163, 74, 0.12); color: #16a34a; }
+html[data-design="saas"] .t-orange { background: rgba(245, 158, 11, 0.14); color: #d97706; }
+html[data-design="saas"] .t-purple { background: rgba(124, 58, 237, 0.12); color: #7c3aed; }
+html[data-theme="dark"][data-design="saas"] .t-blue { background: rgba(127, 134, 255, 0.16); color: #9aa0ff; }
+html[data-theme="dark"][data-design="saas"] .t-green { background: rgba(47, 202, 111, 0.16); color: #4ade80; }
+html[data-theme="dark"][data-design="saas"] .t-orange { background: rgba(245, 158, 11, 0.16); color: #fbbf24; }
+html[data-theme="dark"][data-design="saas"] .t-purple { background: rgba(139, 92, 246, 0.18); color: #a78bfa; }
+
+/* Quiz / Paare / Liste */
+html[data-design="saas"] .opt { border-radius: 12px; }
+html[data-design="saas"] .m-left,
+html[data-design="saas"] .m-right { border-radius: 12px; }
+html[data-design="saas"] .search { border-radius: 10px; }
+html[data-design="saas"] .chip { border-radius: 8px; }
+html[data-design="saas"] .filter-chip { border-radius: 8px; }
+html[data-design="saas"] .icon-btn { border-radius: 10px; }
+html[data-design="saas"] .pill-cat { border-radius: 6px; }
+html[data-design="saas"] .stufe-tag { border-radius: 6px; }
+html[data-design="saas"] .seg { border-radius: 10px; }
+html[data-design="saas"] .seg button { border-radius: 8px; }
+html[data-design="saas"] .toast { border-radius: 10px; }
+
+/* Level-Karte (Basis-Stil kommt aus dem Duolingo-Block) */
+html[data-design="saas"] .level-badge {
+  background: var(--accent-soft); color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 10px;
+  box-shadow: none; width: 46px; height: 46px; font-size: 19px;
+}
+html[data-design="saas"] .duo-pill .gemstone-nr { color: var(--accent); }
+
+/* Tabbar: schwebende Leiste mit aktivem Pill */
+html[data-design="saas"] .tabbar {
+  left: 50%; right: auto; transform: translateX(-50%);
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  width: min(560px, calc(100% - 24px));
+  padding-bottom: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--separator);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+html[data-design="saas"] .tabbar-inner { padding: 6px; }
+html[data-design="saas"] .tab { border-radius: 12px; gap: 2px; font-weight: 500; }
+html[data-design="saas"] .tab svg { width: 23px; height: 23px; }
+html[data-design="saas"] .tab.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+@media (hover: hover) {
+  html[data-design="saas"] .tab:hover { background: var(--card-2); }
+  html[data-design="saas"] .btn:hover { filter: brightness(1.05); }
+  html[data-design="saas"] .mode-tile:hover { border-color: var(--accent); }
+}
+
+@media (min-width: 600px) {
+  html[data-design="saas"] .title-wrap h1 { font-size: 23px; }
+}
+
+/* ============================================================
+   2) EDITORIAL – redaktionell, Papier-Look, Serifen
+   ============================================================ */
+html[data-design="editorial"] {
+  --bg: #f7f3ec;
+  --bg-elevated: rgba(247, 243, 236, 0.94);
+  --card: #fffdf8;
+  --card-2: #f0ebe0;
+  --text: #221d17;
+  --text-2: #6f6558;
+  --separator: #e2d9ca;
+  --accent: #14507a;
+  --accent-soft: rgba(20, 80, 122, 0.10);
+  --green: #2e6f47;
+  --green-soft: rgba(46, 111, 71, 0.12);
+  --red: #a3251c;
+  --red-soft: rgba(163, 37, 28, 0.10);
+  --shadow: 0 1px 2px rgba(34, 29, 23, 0.05), 0 14px 30px -24px rgba(34, 29, 23, 0.55);
+  --shadow-sm: 0 1px 2px rgba(34, 29, 23, 0.06);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --hero-bg: #14507a;
+  --hero-fg: #fdfaf3;
+  --hero-dim: rgba(253, 250, 243, 0.82);
+  --hero-btn-bg: #fdfaf3;
+  --hero-btn-fg: #14507a;
+  --seg-on-fg: #ffffff;
+  color-scheme: light;
+}
+html[data-theme="dark"][data-design="editorial"] {
+  --bg: #17140f;
+  --bg-elevated: rgba(23, 20, 15, 0.94);
+  --card: #1f1b15;
+  --card-2: #2a241c;
+  --text: #f3ece0;
+  --text-2: #a99c88;
+  --separator: rgba(243, 236, 224, 0.16);
+  --accent: #8fb8d8;
+  --accent-soft: rgba(143, 184, 216, 0.16);
+  --green: #74b48b;
+  --green-soft: rgba(116, 180, 139, 0.16);
+  --red: #e08579;
+  --red-soft: rgba(224, 133, 121, 0.14);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 34px -26px rgba(0, 0, 0, 0.9);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --hero-bg: #0f3552;
+  --hero-fg: #f3ece0;
+  --hero-dim: rgba(243, 236, 224, 0.78);
+  --hero-btn-bg: #f3ece0;
+  --hero-btn-fg: #0f3552;
+  --seg-on-fg: #14202b;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"][data-design="editorial"] {
+    --bg: #17140f;
+    --bg-elevated: rgba(23, 20, 15, 0.94);
+    --card: #1f1b15;
+    --card-2: #2a241c;
+    --text: #f3ece0;
+    --text-2: #a99c88;
+    --separator: rgba(243, 236, 224, 0.16);
+    --accent: #8fb8d8;
+    --accent-soft: rgba(143, 184, 216, 0.16);
+    --green: #74b48b;
+    --green-soft: rgba(116, 180, 139, 0.16);
+    --red: #e08579;
+    --red-soft: rgba(224, 133, 121, 0.14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 34px -26px rgba(0, 0, 0, 0.9);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+    --hero-bg: #0f3552;
+    --hero-fg: #f3ece0;
+    --hero-dim: rgba(243, 236, 224, 0.78);
+    --hero-btn-bg: #f3ece0;
+    --hero-btn-fg: #0f3552;
+    --seg-on-fg: #14202b;
+    color-scheme: dark;
+  }
+}
+
+html[data-design="editorial"] body {
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 15.5px;
+}
+html[data-design="editorial"] .title-wrap h1,
+html[data-design="editorial"] h2.big,
+html[data-design="editorial"] .hero h2,
+html[data-design="editorial"] .flip-face h3,
+html[data-design="editorial"] .score-big,
+html[data-design="editorial"] .section-title,
+html[data-design="editorial"] .pet-name,
+html[data-design="editorial"] .level-card b {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+html[data-design="editorial"] .blob { display: none; }
+
+/* Header: feste Papierfläche mit Tintenlinie */
+html[data-design="editorial"] .app-header {
+  background: var(--bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: 1px solid var(--text);
+}
+html[data-design="editorial"] .title-wrap h1 { font-size: 25px; }
+html[data-design="editorial"] .subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+/* Kapitelüberschrift */
+html[data-design="editorial"] .section-title {
+  margin: 34px 4px 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--separator);
+  padding-bottom: 8px;
+}
+html[data-design="editorial"] .eyebrow { letter-spacing: 0.16em; }
+
+/* Karten: flach, nur Haarlinie */
+html[data-design="editorial"] .card,
+html[data-design="editorial"] .flip-face,
+html[data-design="editorial"] .mode-tile,
+html[data-design="editorial"] .install-banner { box-shadow: none; }
+html[data-design="editorial"] .card,
+html[data-design="editorial"] .mode-tile,
+html[data-design="editorial"] .flip-face,
+html[data-design="editorial"] .install-banner { border-width: 1px; }
+html[data-design="editorial"] .flip-face { border-radius: var(--radius); }
+html[data-design="editorial"] .flip-face .def { font-size: 17px; line-height: 1.62; }
+html[data-design="editorial"] .flip-face h3 { font-size: 29px; }
+
+/* Hero: Tintennblock */
+html[data-design="editorial"] .hero {
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+html[data-design="editorial"] .hero::after { background: rgba(255, 255, 255, 0.07); }
+html[data-design="editorial"] .hero .eyebrow { color: var(--hero-dim); }
+html[data-design="editorial"] .hero p { color: var(--hero-dim); }
+html[data-design="editorial"] .btn-white {
+  background: var(--hero-btn-bg);
+  color: var(--hero-btn-fg);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+}
+
+/* Buttons: gesperrte Versalien */
+html[data-design="editorial"] .btn {
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+html[data-design="editorial"] .btn-primary { box-shadow: none; }
+html[data-design="editorial"] .btn-plain { background: var(--card); border: 1px solid var(--separator); color: var(--text); }
+html[data-design="editorial"] .btn:active { transform: none; opacity: 0.82; }
+
+/* Chips, Segmente, Icon-Buttons: eckig */
+html[data-design="editorial"] .chip { border-radius: 4px; font-size: 13px; }
+html[data-design="editorial"] .chip b { font-family: "Fraunces", Georgia, serif; }
+html[data-design="editorial"] .filter-chip { border-radius: 4px; font-size: 13px; }
+html[data-design="editorial"] .icon-btn { border-radius: 4px; background: var(--card); }
+html[data-design="editorial"] .progress-pill { border-radius: 4px; }
+html[data-design="editorial"] .pill-cat { border-radius: 3px; font-size: 11px; }
+html[data-design="editorial"] .stufe-tag { border-radius: 3px; }
+html[data-design="editorial"] .term-check { border-radius: 3px; }
+html[data-design="editorial"] .level-badge { border-radius: 4px; width: 46px; height: 46px; font-size: 19px; }
+html[data-design="editorial"] .seg { border-radius: 4px; padding: 2px; gap: 2px; background: var(--card-2); }
+html[data-design="editorial"] .seg button { border-radius: 2px; font-size: 12.5px; letter-spacing: 0.06em; }
+html[data-design="editorial"] .seg button.on { background: var(--accent); color: var(--seg-on-fg); box-shadow: none; }
+html[data-design="editorial"] .search { border-radius: 4px; }
+html[data-design="editorial"] .toast { border-radius: 4px; }
+
+/* Quiz & Paare: linksbündig wie im Satzspiegel */
+html[data-design="editorial"] .quiz-q { text-align: left; font-size: 20px; }
+html[data-design="editorial"] .opt {
+  border-radius: 4px;
+  text-align: left;
+  font-weight: 500;
+  padding: 15px 18px;
+}
+html[data-design="editorial"] .m-left,
+html[data-design="editorial"] .m-right {
+  border-radius: 4px;
+  justify-content: flex-start;
+  text-align: left;
+  line-height: 1.45;
+}
+html[data-design="editorial"] .example-box,
+html[data-design="editorial"] .hint,
+html[data-design="editorial"] .speech { font-style: italic; }
+html[data-design="editorial"] .term-body { font-size: 15.5px; }
+
+/* Tabbar: Papier + Tintenstrich am aktiven Tab */
+html[data-design="editorial"] .tabbar {
+  background: var(--bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-top: 1px solid var(--text);
+}
+html[data-design="editorial"] .tab { position: relative; border-radius: 0; letter-spacing: 0.05em; }
+html[data-design="editorial"] .tab.active { color: var(--accent); font-weight: 700; }
+html[data-design="editorial"] .tab.active::after {
+  content: "";
+  position: absolute; left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: 20px; height: 2px;
+  background: var(--accent);
+}
+html[data-design="editorial"] .duo-pill .gemstone-nr { color: var(--accent); }
+html[data-design="editorial"] .progress-fill { background: var(--accent); }
+html[data-design="editorial"] .ring-fg { stroke: var(--accent); }
+@media (hover: hover) {
+  html[data-design="editorial"] .mode-tile:hover { border-color: var(--text); }
+  html[data-design="editorial"] .chip:hover { border-color: var(--text-2); }
+}
+
+@media (min-width: 600px) {
+  html[data-design="editorial"] .title-wrap h1 { font-size: 28px; }
+}
+
