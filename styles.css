@@ -382,7 +382,7 @@ h2.big { margin: 0; font-size: 28px; letter-spacing: -0.02em; }
 }
 .tabbar-inner {
   max-width: 760px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid; grid-template-columns: repeat(6, 1fr);
   padding: 8px 6px 10px;
 }
 .tab {
