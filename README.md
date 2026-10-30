@@ -25,7 +25,13 @@ Service-Worker-Update nicht im Browser-Cache hängen bleibt).
    oder A-Record auf `76.76.21.21`)
 3. Vercel stellt automatisch HTTPS aus
 
-## Designs
+## Abi-Quiz (neu)
+
+Tab **„Abi"** (oder Startseite → „Abi-Quiz starten"): 36 Multiple-Choice-Fragen
+zu Klima, Tropen, Polare, Mittlere Breiten, Hochgebirge, Naturkatastrophen,
+Entwicklung, Globalisierung, Bevölkerung, Urbanisierung und Migration – mit
+Erklärung nach jeder Antwort, XP- und Edelstein-Belohnung. Fragen basieren auf
+den Lösungen zu „Diercke Geographie 12 Bayern" (Westermann).
 
 Wechseln in der App unter **Startseite → Einstellungen → Design**:
 

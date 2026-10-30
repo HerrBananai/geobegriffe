@@ -4432,6 +4432,45 @@ function cycleTheme() {
 }
 
 /* ---------- State ---------- */
+const ABI_QUIZ = [
+  { topic: 'Klima', q: 'Welcher Anteil der eingehenden Sonnenstrahlung wird von der Erdoberfläche absorbiert?', opts: ['ca. 23 %', 'ca. 47 %', 'ca. 68 %', 'ca. 82 %'], a: 1, exp: 'Die Erdoberfläche absorbiert ca. 47 %; ca. 23 % die Atmosphäre/Wolken, ca. 30 % werden reflektiert (Albedo).' },
+  { topic: 'Klima', q: 'Welches Gas ist für den natürlichen Treibhauseffekt am stärksten verantwortlich?', opts: ['CO₂', 'Methan (CH₄)', 'Wasserdampf', 'Distickstoffoxid (N₂O)'], a: 2, exp: 'Wasserdampf ist das häufigste und wirkungsvollste Treibhausgas im natürlichen Treibhauseffekt; CO₂ dominiert den anthropogenen Anteil.' },
+  { topic: 'Klima', q: 'Welche Oberfläche hat die höchste Albedo?', opts: ['Wald', 'Asphalt', 'Frischer Schnee', 'Meerwasser'], a: 2, exp: 'Frischer Schnee reflektiert bis zu 90 % (Albedo ~0,9); Wasser absorbiert fast alles (~0,06).' },
+  { topic: 'Klima', q: 'Aus welcher Richtung wehen die Passate auf der Nordhalbkugel?', opts: ['aus Südwest', 'aus Nordost', 'aus Südost', 'aus Nordwest'], a: 1, exp: 'Passate wehen auf der Nordhalbkugel aus Nordost (Nordostpassat), auf der Südhalbkugel aus Südost.' },
+  { topic: 'Klima', q: 'Was kennzeichnet die innertropische Konvergenzzone (ITC)?', opts: ['Hochdruck, Absinken, trocken', 'Tiefdruck, Aufstieg, Niederschlag', 'Stabile Windscherung', 'Konstante Temperatur'], a: 1, exp: 'In der ITC konvergieren die Passate, Luft steigt auf → Tiefdruck, Wolkenbildung und starke Niederschläge.' },
+  { topic: 'Klima', q: 'Welcher Monsun bringt den Sommerregen nach Südasien?', opts: ['Nordostmonsun', 'Südwestmonsun', 'Passatmonsun', 'Wintermonsun'], a: 1, exp: 'Der Südwestmonsun (Sommermonsun) transportiert feuchte Luft vom Indischen Ozean → intensiver Regen; der Nordostmonsun ist trocken.' },
+  { topic: 'Klima', q: 'Was passiert bei El Niño im Ostpazifik?', opts: ['Abkühlung des Oberflächenwassers', 'Erwärmung des Oberflächenwassers', 'Stärkere Passate', 'Ausbleiben aller Niederschläge'], a: 1, exp: 'El Niño: anomal warmes Oberflächenwasser im Ostpazifik, geschwächte Passate, weltweite Wetteranomalien.' },
+  { topic: 'Klima', q: 'Was zeichnet La Niña aus?', opts: ['Erwärmung im Ostpazifik', 'Verstärkte Passate, kühleres Ostpazifikwasser', 'Trockenheit in Australien', 'Erwärmung des Atlantiks'], a: 1, exp: 'La Niña: verstärkte Passate, kühleres Oberflächenwasser im Ostpazifik, oft verstärkte Niederschläge in Australien/Südostasien.' },
+  { topic: 'Klima', q: 'Welche Rolle spielt der Nordatlantikstrom für Europa?', opts: ['Kühlt Europa im Winter', 'Wärmt Westeuropa (maritime Klimamilderung)', 'Verursacht Dürren', 'Transportiert Tiefenwasser nach Süden'], a: 1, exp: 'Der Nordatlantikstrom transportiert warmes Wasser aus den Tropen nach Nordwesteuropa → mildes Seeklima.' },
+  { topic: 'Klima', q: 'Um wie viel höher ist die aktuelle CO₂-Konzentration gegenüber dem vorindustriellen Niveau (~280 ppm)?', opts: ['ca. 50 %', 'ca. 100 %', 'ca. 150 %', 'ca. 200 %'], a: 0, exp: 'Aktuell >420 ppm gegenüber ~280 ppm präindustriell → Anstieg um ca. 50 %.' },
+  { topic: 'Klima', q: 'Welches Kippelement bezeichnet das mögliche Abbrechen der atlantischen Umwälzzirkulation (AMOC)?', opts: ['Grönländischer Eisschild', 'Amazonas-Regenwald', 'Golfstrom/AMOC', 'Permafrost'], a: 2, exp: 'Die AMOC (Golfstromsystem) ist ein Kippelement; bei Störung droht Abkühlung in Nordwesteuropa.' },
+  { topic: 'Tropen', q: 'Welche Bodeneigenschaft prägt den tropischen Regenwald?', opts: ['Schwarzerde (Tschernosem)', 'Lateritböden, nährstoffarm', 'Podsol', 'Braunerde'], a: 1, exp: 'Tropische Regenwaldböden sind oft tief verwitterte Laterite; Nährstoffe liegen vor allem in der Biomasse.' },
+  { topic: 'Tropen', q: 'Was versteht man unter "Shifting Cultivation"?', opts: ['Dauerhafte Plantagenwirtschaft', 'Wanderfeldbau mit Brandrodung', 'Agroforstwirtschaft', 'Hydroponik'], a: 1, exp: 'Shifting Cultivation = Wanderfeldbau: Rodung, kurze Nutzung, dann Brache; traditionell nachhaltig bei geringer Bevölkerungsdichte.' },
+  { topic: 'Tropen', q: 'In welcher Klimazone liegt die Savanne?', opts: ['Immerfeuchte Tropen', 'Wechselfeuchte Tropen', 'Trockene Tropen/Wüste', 'Subtropen'], a: 1, exp: 'Savannen sind die Vegetation der wechselfeuchten Tropen mit ausgeprägter Trocken- und Regenzeit.' },
+  { topic: 'Tropen', q: 'Welche Region ist ein klassisches Beispiel für Desertifikation?', opts: ['Amazonasbecken', 'Sahelzone', 'Mittelmeerraum', 'Skandinavien'], a: 1, exp: 'Die Sahelzone südlich der Sahara zeigt Desertifikation durch Klimaschwankungen und Übernutzung.' },
+  { topic: 'Polare Zone', q: 'Was ist Permafrost?', opts: ['Eis auf dem Meer', 'Dauerhaft gefrorener Boden', 'Gletschereis', 'Winterfrost'], a: 1, exp: 'Permafrost = Boden, der mindestens zwei Jahre durchgehend unter 0 °C bleibt; speichert viel organisches Kohlenstoff.' },
+  { topic: 'Polare Zone', q: 'Welcher Unterschied besteht zwischen Arktis und Antarktis?', opts: ['Beide sind Kontinente', 'Arktis ist ein Ozean mit Meereis, Antarktis ein Kontinent', 'Antarktis hat mehr Bevölkerung', 'Arktis ist wärmer im Winter'], a: 1, exp: 'Die Arktis ist ein von Land umgebener Ozean (Meereis), die Antarktis ein kontinentaler Eisschild.' },
+  { topic: 'Mittlere Breiten', q: 'Welche Windzone prägt die Mittleren Breiten?', opts: ['Passate', 'Westwinde', 'Polarwinde', 'Monsunwinde'], a: 1, exp: 'Die Mittleren Breiten (ca. 30–60°) liegen in der Westwindzone mit wandernden Tiefdruckgebieten (Zyklonen).' },
+  { topic: 'Mittlere Breiten', q: 'Welches Klima hat heiße, trockene Sommer und milde, feuchte Winter?', opts: ['Kontinentalklima', 'Maritimes Klima', 'Mediterranes Klima', 'Tundrenklima'], a: 2, exp: 'Mediterranes Klima: sommerliche Trockenheit, winterlicher Regen (z. B. Mittelmeerraum).' },
+  { topic: 'Hochgebirge', q: 'Welche Gefahr ist in Hochgebirgen durch tauenden Permafrost verstärkt?', opts: ['Erdbeben', 'Felsstürze/Bergstürze', 'Tsunamis', 'Dürren'], a: 1, exp: 'Auftauender Permafrost destabilisiert Hänge → Fels-/Bergstürze, z. B. in den Alpen.' },
+  { topic: 'Naturkatastrophen', q: 'Wo entstehen die meisten starken Erdbeben?', opts: ['Intraplattenbereiche', 'Konvergente Plattengrenzen (Subduktion)', 'Mitten in Kontinenten', 'An Divergenzonen im Atlantik'], a: 1, exp: 'Die stärksten Beben entstehen an Subduktionszonen (z. B. Pazifischer Feuerring).' },
+  { topic: 'Naturkatastrophen', q: 'Was löst einen Tsunami typischerweise aus?', opts: ['Starkwind', 'Seebeben/untermeerische Erdbeben', 'Mondphasen', 'Vulkanausbruch an Land'], a: 1, exp: 'Tsunamis entstehen meist durch starke Seebeben mit vertikaler Meeresbodenverschiebung.' },
+  { topic: 'Naturkatastrophen', q: 'Welche Bedingung ist für die Entstehung tropischer Zyklone nötig?', opts: ['Wassertemperatur < 20 °C', 'Wassertemperatur > 26 °C', 'Polarfront', 'Hohe Breiten'], a: 1, exp: 'Tropische Zyklone benötigen Meeresoberflächentemperaturen > 26 °C und genügend Corioliskraft.' },
+  { topic: 'Entwicklung', q: 'Was bedeutet der Begriff "Schwellenland"?', opts: ['Sehr armes Land', 'Land im Übergang zum Industrieland', 'Reiches Industrieland', 'Kleinstaat'], a: 1, exp: 'Schwellenländer (z. B. China, Indien, Brasilien) haben hohes Wachstum und entwickeln sich zu Industrieländern.' },
+  { topic: 'Entwicklung', q: 'Welche drei Dimensionen umfasst der Human Development Index (HDI)?', opts: ['Einkommen, Militär, Fläche', 'Lebenserwartung, Bildung, Einkommen', 'Bevölkerung, BIP, Exporte', 'Klima, Ressourcen, Technik'], a: 1, exp: 'HDI = Lebenserwartung bei Geburt, Bildung (Schuljahre), Bruttonationaleinkommen pro Kopf (GNI).' },
+  { topic: 'Entwicklung', q: 'Was misst der Gini-Koeffizient?', opts: ['Wirtschaftswachstum', 'Einkommens- und Vermögensungleichheit', 'Bevölkerungsdichte', 'CO₂-Ausstoß'], a: 1, exp: 'Der Gini-Koeffizient misst die Ungleichheit der Einkommens- bzw. Vermögensverteilung (0 = Gleichheit, 1 = Ungleichheit).' },
+  { topic: 'Bevölkerung', q: 'In Phase 3 des demografischen Übergangs ...', opts: ['Geburten- und Sterberate hoch', 'Geburtenrate sinkt, Sterberate niedrig → Wachstum verlangsamt sich', 'Beide Raten niedrig, Stagnation', 'Sterberate steigt'], a: 1, exp: 'Phase 3: Geburtenrate sinkt bei niedriger Sterberate → Wachstum verlangsamt sich; Phase 4: beide niedrig.' },
+  { topic: 'Urbanisierung', q: 'Was ist ein "Slum"?', opts: ['Geplante Neubausiedlung', 'Informelle Siedlung mit schlechter Infrastruktur', 'Industriegebiet', 'Altstadt'], a: 1, exp: 'Slums sind informelle Siedlungen mit unzureichender Infrastruktur, oft in Megastädten des Globalen Südens.' },
+  { topic: 'Migration', q: 'Was sind Push-Faktoren?', opts: ['Anziehungsfaktoren im Zielland', 'Wegzugsgründe im Herkunftsland', 'Wirtschaftliche Vorteile', 'Klimatische Vorzüge'], a: 1, exp: 'Push-Faktoren (z. B. Armut, Krieg, Naturkatastrophen) treiben Menschen aus dem Herkunftsland; Pull-Faktoren ziehen ins Zielland.' },
+  { topic: 'Globalisierung', q: 'Was sind TNCs?', opts: ['Nationale Handelskammern', 'Transnationale Konzerne', 'Tarifverhandlungskommissionen', 'Transportnetzwerke'], a: 1, exp: 'TNCs (Transnational Corporations) sind Konzerne, die in mehreren Ländern produzieren und handeln.' },
+  { topic: 'Entwicklung', q: 'Wie viele Ziele umfasst die Agenda 2030 (SDGs)?', opts: ['10', '17', '21', '50'], a: 1, exp: 'Die 17 Sustainable Development Goals (SDGs) der UN zielen auf Nachhaltigkeit bis 2030.' },
+  { topic: 'Entwicklung', q: 'Welche Theorie sieht Unterentwicklung als Folge kolonialer Ausbeutung?', opts: ['Modernisierungstheorie', 'Dependenztheorie', 'Demografische Übergangstheorie', 'Plattentektonik'], a: 1, exp: 'Dependenztheorie (Frank, Wallerstein): Zentrum-Peripherie-Verhältnis, Ausbeutung durch Industrieländer.' },
+  { topic: 'Entwicklung', q: 'Was beschreibt der Begriff "Globaler Süden"?', opts: ['Geographische Südhalbkugel', 'Länder mit geringerem Entwicklungsstand', 'Tropische Zone', 'EU-Staaten'], a: 1, exp: '"Globaler Süden" ist ein politisch-ökonomischer Begriff für Länder mit geringerem Entwicklungsstand (nicht geographisch).' },
+  { topic: 'Bevölkerung', q: 'Was ist die "demografische Dividende"?', opts: ['Hohe Geburtenrate', 'Großer Anteil der Erwerbsbevölkerung fördert Wachstum', 'Starke Alterung', 'Migration'], a: 1, exp: 'Demografische Dividende: wenn der Anteil der Erwerbsfähigen groß und die Abhängigenquote klein ist → Wachstumspotenzial.' },
+  { topic: 'Globalisierung', q: 'Welche Organisation regelt den Welthandel?', opts: ['IWF', 'Weltbank', 'WTO', 'UNEP'], a: 2, exp: 'Die WTO (World Trade Organization) regelt und liberalisiert den Welthandel; Sitz in Genf.' },
+  { topic: 'Klima', q: 'Welches Klimagas hat die längste atmosphärische Verweildauer?', opts: ['Wasserdampf', 'Methan', 'CO₂', 'Ozon'], a: 2, exp: 'CO₂ verbleibt Jahrhunderte in der Atmosphäre; Methan ~12 Jahre, Wasserdampf Tage bis Wochen.' }
+];
+
 const state = {
   terms: [],
   known: loadKnown(),
@@ -4446,6 +4485,7 @@ const state = {
   cards: { queue: [], i: 0, flipped: false, onlyUnknown: false },
   quiz: null,
   match: null,
+  abi: null,
   list: { query: '', cat: 'Alle', stufe: 'Alle', openId: null }
 };
 
@@ -4454,7 +4494,8 @@ const TITLES = {
   cards: ['Karteikarten', 'Tippen zum Umdrehen'],
   quiz: ['Quiz', '10 Fragen pro Runde'],
   match: ['Paare', 'Begriff + Definition verbinden'],
-  list: ['Alle Begriffe', 'Suchen & abhaken']
+  list: ['Alle Begriffe', 'Suchen & abhaken'],
+  abi: ['Abi-Quiz', '36 Fragen · Diercke Geographie']
 };
 
 function saveKnown() {
@@ -4511,6 +4552,7 @@ function go(view) {
   else if (view === 'quiz') { if (!state.quiz) newQuizRound(); v.innerHTML = viewQuiz(); }
   else if (view === 'match') { if (!state.match) newMatchRound(); v.innerHTML = viewMatch(); }
   else if (view === 'list') v.innerHTML = viewList();
+  else if (view === 'abi') { if (!state.abi) newAbiRound(); v.innerHTML = viewAbi(); }
   bindView(view, v);
   window.scrollTo(0, 0);
   v.style.animation = 'none';
@@ -4566,6 +4608,10 @@ function viewHome() {
       '<button class="mode-tile" data-go="match"><span class="tile-icon t-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg></span><b>Paare</b><span>Zuordnen auf Zeitgefühl</span></button>' +
       '<button class="mode-tile" data-go="list"><span class="tile-icon t-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13"/></svg></span><b>Alle Begriffe</b><span>Suchen &amp; abhaken</span></button>' +
     '</div>' +
+    '<h3 class="section-title">Abi-Vorbereitung</h3>' +
+    '<section class="card"><div class="row"><div style="flex:1;min-width:0"><b>Abi-Quiz</b>' +
+      '<p class="muted" style="margin:4px 0 0;font-size:13px">36 Fragen aus Klima, Tropen, Polare, Entwicklung, Globalisierung &amp; mehr – für die schriftliche Prüfung.</p></div>' +
+      '<button class="btn btn-primary" data-go="abi">Starten</button></div></section>' +
     '<h3 class="section-title">Kategorien</h3>' +
     '<div class="chip-row">' + catChips + '</div>' +
     '<h3 class="section-title">Einstellungen</h3>' +
@@ -4736,6 +4782,65 @@ function nextQuiz() {
   if (qz.i < qz.questions.length - 1) { qz.i++; qz.picked = null; }
   else { qz.finished = true; saveBest(qz.score); addGems(5); toast('Runde fertig! +' + qz.gained + ' XP · +5 Edelsteine'); }
   go('quiz');
+}
+
+/* ---------- Abi-Quiz ---------- */
+function newAbiRound() {
+  state.abi = {
+    questions: shuffle(ABI_QUIZ.slice()),
+    i: 0, score: 0, picked: null, finished: false, gained: 0
+  };
+}
+function viewAbi() {
+  const aq = state.abi;
+  if (!aq) { newAbiRound(); return viewAbi(); }
+  if (aq.finished) {
+    const answered = aq.i + 1;
+    return '<section class="card result-wrap">' +
+      '<p class="eyebrow">Abi-Quiz beendet</p>' +
+      '<div class="score-big">' + aq.score + '/' + answered + '</div>' +
+      '<p class="xp-gained">+' + aq.gained + ' XP</p>' +
+      '<p class="muted">' + (aq.score === aq.questions.length ? 'Fehlerfrei. Sehr stark!' :
+        aq.score >= Math.ceil(aq.questions.length * 0.7) ? 'Solides Wissen – weiter so!' :
+        'Bleib dran – Wiederholung hilft.') + '</p>' +
+      '<button class="btn btn-primary" id="abiAgain">Neue Runde (36 Fragen)</button></section>';
+  }
+  const q = aq.questions[aq.i];
+  const opts = q.opts.map((opt) => {
+    let cls = 'opt';
+    if (aq.picked !== null) {
+      if (opt === q.opts[q.a]) cls += ' correct';
+      else if (opt === aq.picked) cls += ' wrong';
+    }
+    return '<button class="' + cls + '"' + (aq.picked !== null ? ' disabled' : '') +
+      ' data-abiopt="' + esc(opt) + '">' + esc(opt) + '</button>';
+  }).join('');
+  return (
+    '<div class="flash-meta"><div class="progress-track"><div class="progress-fill" style="width:' +
+      Math.round(((aq.i + 1) / aq.questions.length) * 100) + '%"></div></div>' +
+      '<span class="counter">Frage ' + (aq.i + 1) + '/' + aq.questions.length + ' · ' + aq.score + ' P. · ' + esc(q.topic) + '</span></div>' +
+    '<section class="card"><p class="quiz-q">' + esc(q.q) + '</p></section>' +
+    opts +
+    (aq.picked !== null
+      ? '<section class="card" style="margin-top:12px"><p class="muted" style="margin:0"><b>Erklärung:</b> ' + esc(q.exp) + '</p></section>' +
+        '<div class="btn-row"><button class="btn btn-primary" id="abiNext">' +
+        (aq.i < aq.questions.length - 1 ? 'Weiter' : 'Ergebnis') + '</button></div>'
+      : '')
+  );
+}
+function pickAbi(opt) {
+  const aq = state.abi;
+  if (!aq || aq.picked !== null || aq.finished) return;
+  aq.picked = opt;
+  const q = aq.questions[aq.i];
+  if (opt === q.opts[q.a]) { aq.score++; aq.gained += 10; addXP(10); }
+  go('abi');
+}
+function nextAbi() {
+  const aq = state.abi;
+  if (aq.i < aq.questions.length - 1) { aq.i++; aq.picked = null; }
+  else { aq.finished = true; addGems(5); toast('Abi-Quiz fertig! ' + aq.score + '/' + aq.questions.length + ' · +5 Edelsteine'); }
+  go('abi');
 }
 
 /* ============================================================
@@ -4951,6 +5056,12 @@ function bindView(view, root) {
       state.list.openId = state.list.openId === id ? null : id;
       go('list');
     }));
+  } else if (view === 'abi') {
+    $$('[data-abiopt]', root).forEach((b) => b.addEventListener('click', () => pickAbi(b.dataset.abiopt)));
+    const n = $('#abiNext');
+    if (n) n.addEventListener('click', nextAbi);
+    const a = $('#abiAgain');
+    if (a) a.addEventListener('click', () => { newAbiRound(); go('abi'); });
   }
 }
 
@@ -5000,7 +5111,14 @@ async function init() {
   updateHeader();
   setupInstallBanner();
   if ('serviceWorker' in navigator && /^https?:/.test(location.protocol)) {
-    try { await navigator.serviceWorker.register('sw.js'); } catch (e) {}
+    try {
+      const hadController = !!navigator.serviceWorker.controller;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (hadController) window.location.reload();
+      });
+      const reg = await navigator.serviceWorker.register('sw.js');
+      reg.update();
+    } catch (e) {}
   }
   go('home');
 }
