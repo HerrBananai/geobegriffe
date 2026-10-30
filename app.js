@@ -4554,7 +4554,15 @@ function go(view) {
   else if (view === 'list') v.innerHTML = viewList();
   else if (view === 'abi') { if (!state.abi) newAbiRound(); v.innerHTML = viewAbi(); }
   bindView(view, v);
-  window.scrollTo(0, 0);
+  const nextBtn = document.getElementById('quizNext') || document.getElementById('abiNext');
+  if (nextBtn) {
+    const r = nextBtn.getBoundingClientRect();
+    const tabH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tabbar-h')) || 76;
+    const target = window.scrollY + r.bottom - (window.innerHeight - tabH - 12);
+    window.scrollTo(0, Math.max(0, target));
+  } else {
+    window.scrollTo(0, 0);
+  }
   v.style.animation = 'none';
   void v.offsetWidth;
   v.style.animation = '';
